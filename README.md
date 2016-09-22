@@ -1,10 +1,10 @@
 # Estrutura de Dados - MATD04 - 2016.1
 # Repositorio do projeto final
 
-**UFBA – IM – DCC
-Matd04 – Estrutura de Dados
-Trabalho  –  setembro/2016
-Professor: Walter Rocha Palma**
+**UFBA – IM – DCC**
+**Matd04 – Estrutura de Dados**
+**Trabalho  –  setembro/2016**
+**Professor: Walter Rocha Palma**
 
 
 ## EMENTA
@@ -61,208 +61,170 @@ A estrutura da unidade de tratamento semi-intensivo tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número da unidade | CHAR | 1 |
+| Situação | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Leitos | PONTEIRO |  |
 
 
 A estrutura dos leitos da unidade de tratamento semi-intensivo  tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número do leito | CHAR | 2 |
+| Situação | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Paciente | PONTEIRO |  |
+| Médico | PONTEIRO |  |
 
 
 A estrutura da unidade de tratamento intensivo tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número da unidade | CHAR | 1 |
+| Situação | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Leitos | PONTEIRO |  |
 
 
 A estrutura dos leitos da unidade de tratamento intensivo tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número do leito | CHAR | 2 |
+| Situação | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Paciente | PONTEIRO |  |
+| Médico | PONTEIRO |  |
 
 
 A estrutura dos consultórios tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número do consultório | CHAR | 2 |
+| Situação agenda do mês 1 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda 1 | PONTEIRO |  |
+| Situação agenda do mês 2 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda do mês 2 | PONTEIRO |  |
+| Situação agenda do mês 3 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda do mês 3 | PONTEIRO |  |
 
 
 A estrutura da agenda dos consultórios tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Dia do mês | CHAR | 2 |
+| Hora do dia | CHAR | 4 |
+| Situação da hora | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Médico | PONTEIRO |  |
+| Paciente | PONTEIRO |  |
 
  
 A estrutura das unidades de exames de imagem tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número da unidade | CHAR | 2 |
+| Situação agenda do mês 1 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda 1 | PONTEIRO |  |
+| Situação agenda do mês 2 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda do mês 2 | PONTEIRO |  |
+| Situação agenda do mês 3 | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda do mês 3 | PONTEIRO |  |
 
 
 A estrutura da agenda das unidades de imagem tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Dia do mês | CHAR | 2 |
+| Hora do dia | CHAR | 4 |
+| Situação da hora | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Médico | PONTEIRO |  |
+| Paciente | PONTEIRO |  |
 
  
 A estrutura dos exames de imagem tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código do exame | CHAR | 4 |
+| Médico | PONTEIRO |  |
+| Paciente | PONTEIRO |  |
+| Resultado | CHAR | 500 |
 
  
 A estrutura do laboratório de exames clínicos tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número da unidade | CHAR | 1 |
+| Exame tipo 1 | PONTEIRO |  |
+| Exame tipo 2 | PONTEIRO |  |
+| Exame tipo 3 | PONTEIRO |  |
+| Exame tipo 4 | PONTEIRO |  |
+| Exame tipo 5 | PONTEIRO |  |
+| Exame tipo 6 | PONTEIRO |  |
 
 
 A estrutura dos exames tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código do exame | CHAR | 4 |
+| Médico | PONTEIRO |  |
+| Paciente | PONTEIRO |  |
+| Resultado | CHAR | 500 |
 
 
 A estrutura da farmácia central e das farmácias satélites tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número da farmácia | CHAR | 2 |
+| Local – andar da farmácia |  CHAR | 2 |
+| Medicamentos | PONTEIRO |  |
 
 
 A estrutura dos medicamentos os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código do medicamento | CHAR | 10 |
+| QTD – quantidade em estoque | INTEIRO |  |
+| Valor unitário | FLOAT |  |
+| Nome – nome do medicamento | CHAR | 30 |
+| Tipo | CHAR | 1 ( 1- marca, 2-similar,3-genérico |
+| Lote | CHAR | 4 |
+| Validade | CHAR | 8 |
 
 
 A estrutura da unidade de pronto atendimento tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código da unidade | CHAR | 1 |
+| Consultório | PONTEIRO |  |
+| Leitos | PONTEIRO |  |
 
 
 A estrutura dos consultórios da unidade de pronto atendimento tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número do consultório | CHAR | 2 |
+| Situação agenda do dia | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Agenda do dia | PONTEIRO |  |
 
 
 A estrutura da agenda dos consultórios de pronto atendimento tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Dia do mês | CHAR | 2 |
+| Hora do dia | CHAR | 4 |
+| Situação da hora | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Médico | PONTEIRO |  |
+| Paciente | PONTEIRO |  |
 
 
 A estrutura dos leitos da unidade de pronto atendimento tem os seguintes campos:
@@ -304,8 +266,6 @@ A estrutura dos pacientes tem os seguintes campos:
 | Conta | PONTEIRO |  |
 | Código do Plano | CHAR | 8 |
 | Prontuário | PONTEIRO |  |
-|  |  |  |
-|  |  |  |
 
 
 A estrutura das contas dos pacientes tem os seguintes campos:
@@ -360,11 +320,9 @@ A estrutura de Doenças tem os seguintes campos:
 |  |  |  |
 
 
-```
-Caso o aluno considere necessário ele pode criar outras estruturas complementares, devendo documentá-las, a exemplos das aqui apresentadas.
+> Caso o aluno considere necessário ele pode criar outras estruturas complementares, devendo documentá-las, a exemplos das aqui apresentadas.
 
-As Estruturas destinadas a dados que tenham quantidades de itens pré-determinadas devem ser armazenadas em Listas Lineares com alocação sequencial e estática, com o índice do primeiro elemento armazenado em uma variável de nome PRIMEIRO e uma variável de nome FIM com o índice do último elemento alocado. As demais em Listas Lineares com alocação não sequencial e dinâmica ( encadeada ). O tipo de lista utilizada, simple, circular, dupalmente encadeada, pilha, fila ou árvore, fica a critério do aluno. 
-```
+> As Estruturas destinadas a dados que tenham quantidades de itens pré-determinadas devem ser armazenadas em Listas Lineares com alocação sequencial e estática, com o índice do primeiro elemento armazenado em uma variável de nome PRIMEIRO e uma variável de nome FIM com o índice do último elemento alocado. As demais em Listas Lineares com alocação não sequencial e dinâmica ( encadeada ). O tipo de lista utilizada, simple, circular, dupalmente encadeada, pilha, fila ou árvore, fica a critério do aluno. 
 
 ## EQUIPES
 
@@ -381,12 +339,10 @@ As tarefas elencadas neste trabalho, referentes às estruturas e suas operaçõe
 	7) Listar todos os elementos de cada uma das estruturas
 	8) Obter o conteúdo de um de terminado item de cada uma das estruturas
 
-```
-O programa principal deve providenciar a inicialização das estruturas e interagir com o usuário, apresentando um menu das operações que ele deseja fazer.
+> O programa principal deve providenciar a inicialização das estruturas e interagir com o usuário, apresentando um menu das operações que ele deseja fazer.
 Deve ter uma opção no menu para encerrar as operações. 
 
-O programa principal deve ser comum a todos os grupos.
-```
+> O programa principal deve ser comum a todos os grupos.
 
 ### Equipe 1: Quartos e enfermarias
 
