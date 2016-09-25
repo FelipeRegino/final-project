@@ -2,8 +2,11 @@
 # Repositorio do projeto final
 
 **UFBA – IM – DCC**
-**Matd04 – Estrutura de Dados**
+
+**MATD04 – Estrutura de Dados**
+
 **Trabalho  –  setembro/2016**
+
 **Professor: Walter Rocha Palma**
 
 
@@ -231,26 +234,22 @@ A estrutura dos leitos da unidade de pronto atendimento tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – número do leito | CHAR | 2 |
+| Situação | CHAR | 1 ( 1- livre, 2-ocupado) |
+| Paciente | PONTEIRO |  |
+| Médico | PONTEIRO |  |
 
 
 A estrutura dos médicos tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – CREMEB do médico | CHAR | 8 |
+| Nome | CHAR | 40 |
+| Especialidade | CHAR | 20 |
+| Remuneração por consulta | FLOAT |  |
+| Remuneração por cirurgia | FLOAT |  |
+| Paciente | PONTEIRO |  |
 
 
 A estrutura dos pacientes tem os seguintes campos:
@@ -272,52 +271,44 @@ A estrutura das contas dos pacientes tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código do paciente | CHAR | 10 |
+| Procedimento | PONTEIRO |  |
+| Consulta | PONTEIRO |  |
+| Medicamento | PONTEIRO |  |
+| Diárias | PONTEIRO |  |
 
 
 As estruturas de procedimento, consulta, medicamento e diárias tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código do item | CHAR | 10 |
+| Nome | CHAR | 40 |
+| Valor | FLOAT |  |
 
 
 A estrutura de Prontuário dos pacientes tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código do paciente | CHAR | 10 |
+| Procedimento | PONTEIRO |  |
+| Consulta | PONTEIRO |  |
+| Medicamento | PONTEIRO |  |
+| Exames | PONTEIRO |  |
+| Doenças | PONTEIRO |  |
 
 
 A estrutura de Doenças tem os seguintes campos:
 
 | Campo | Tipo | Tamanho |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Código – código da doença | CHAR | 10 |
+| Gravidade | CHAR | 1 – Alta, 2 – Média, 3 - Baixa |
+| Procedimento indicado | PONTEIRO |  |
+| Medicamento indicado | PONTEIRO |  |
+| Exame de imagem indicado | PONTEIRO |  |
+| Exame de laboratório indicado | PONTEIRO |  |
 
 
 > Caso o aluno considere necessário ele pode criar outras estruturas complementares, devendo documentá-las, a exemplos das aqui apresentadas.
@@ -354,7 +345,7 @@ Deve ter uma opção no menu para encerrar as operações.
 	13) Lançar diária de um paciente de uma enfermaria
 	14) Dar alta de um paciente de uma enfermaria
 
-### Equipe 2: Unidades de Tramento semi-intensivo e Consultórios
+### Equipe 2: Unidades de Tratamento semi-intensivo e Consultórios
 
 	44) Médico [NEW]
 	15) Internar um paciente em uma unidade de tratamento semi intensivo
@@ -380,7 +371,7 @@ Deve ter uma opção no menu para encerrar as operações.
 	29) Confirmar recepção de medicamento na Farmácia Satélite
 	30) Lançar medicamento para uma paciente
 
-### Equipe 5: Umidade de pronto Atendimento e Faturamento
+### Equipe 5: Unidade de Pronto Atendimento e Faturamento
 
 	31) Recepcionar paciente no Pronto Atendimento
 	32) Agendar paciente do pronto atendimento para um consultório
@@ -397,16 +388,12 @@ Deve ter uma opção no menu para encerrar as operações.
 	42) Emitir relatório de faturamento mensal
 
 
-## MAÕS À MASSA
+## MÃOS À MASSA
 
 ### Prototipagem das Funções:
 
 > Arquivo "x.h":
 ...
-...
 
 > Arquivo "x.h":
 ...
-...
-
-
