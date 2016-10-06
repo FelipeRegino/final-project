@@ -315,6 +315,8 @@ A estrutura de Doenças tem os seguintes campos:
 
 > As Estruturas destinadas a dados que tenham quantidades de itens pré-determinadas devem ser armazenadas em Listas Lineares com alocação sequencial e estática, com o índice do primeiro elemento armazenado em uma variável de nome PRIMEIRO e uma variável de nome FIM com o índice do último elemento alocado. As demais em Listas Lineares com alocação não sequencial e dinâmica ( encadeada ). O tipo de lista utilizada, simple, circular, dupalmente encadeada, pilha, fila ou árvore, fica a critério do aluno. 
 
+> Cada equipe deve acrescentar uma estrutura de árvore binária para cada lista com alocação estática, visando guardar os índices ( endereços ) das células, mantendo-as ordenadas por ordem do código ( chave da lista ). Deve ser criadas operações para gerar índice de cada lista e para imprimir o conteúdo das listas em ordem crescente de código, usando a estrutura de que guarda os índices ( árvores binárias ).
+
 ## EQUIPES
 
 As tarefas elencadas neste trabalho, referentes às estruturas e suas operações, devem ser executadas pelas equipes, conforme a seguinte divisão:
