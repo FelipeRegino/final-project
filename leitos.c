@@ -25,7 +25,6 @@ void exibirMenu() {
 	printf("3. Imprimir relatório.\n");
 	printf("4. Sair.\n\n");
 	printf("Selecione a opção desejada.\n");
-
 }
 
 //main program
