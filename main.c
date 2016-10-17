@@ -57,23 +57,50 @@ void menu(){
 
 		//-------------------------------------
 		printf("\n-> Unidade de Tratamento Semi-intensivo e Consultório:\n\n");
-		printf("99- abcdefg\n");
-		printf("99- abcdefg\n");
+		
+		printf("27- Internar um paciente em uma unidade de tratamento semi intensivo\n");
+		printf("28- Lançar diária de paciente em uma unidade de tratamento semi intensivo\n");
+		printf("29- Dar alta de um paciente em uma unidade de tratamento semi intensivo\n");
+		printf("30- Agendar uma consulta para um paciente em um consultório para um médico\n");
+		printf("31- Registrar o resultado da consulta de uma paciente\n");
 
 		//-------------------------------------
 		printf("\n-> Unidade de Tratamento Intensivo e Unidade de Exames de Imagem:\n\n");
-		printf("99- abcdefg\n");
-		printf("99- abcdefg\n");
+		
+		printf("32- Internar um paciente em uma unidade de tratamento intensivo \n");
+		printf("33- Lançar diária de paciente em uma unidade de tratamento intensivo \n");
+		printf("34- Dar alta de um paciente em uma unidade de tratamento intensivo\n");
+		printf("35- Agendar um exame para um paciente em uma unidade de exame de imagem\n");
+		printf("36- Registrar o resultado de um exame de imagem de um paciente \n");
+		
+		
 
 		//-------------------------------------
 		printf("\n-> Laboratório, Farmácia Central e Farmácia Satélite:\n\n");
-		printf("99- abcdefg\n");
-		printf("99- abcdefg\n");
+		
+		printf("37- Registrar a entrada de material para exames de laboratório de um paciente\n");
+		printf("38- Registrar o resultado dos exames de laboratório de um paciente\n");
+		printf("39- Registrar entrada de medicamento na Farmácia Central\n");
+		printf("40- Registrar transferência de medicamento da farmácia central para farmácia Satélite\n");
+		printf("41- Confirmar recepção de medicamento na Farmácia Satélite\n");
+		printf("42- Lançar medicamento para uma paciente\n");
 
 		//-------------------------------------
 		printf("\n-> Unidade de Pronto Atendimento e Faturamento:\n\n");
-		printf("99- abcdefg\n");
-		printf("99- abcdefg\n");
+		
+		printf("43- Recepcionar paciente no Pronto Atendimento\n");
+		printf("44- Agendar paciente do pronto atendimento para um consultório\n");
+		printf("45- Encaminhar paciente do pronto atendimento para um consultório\n");
+		printf("46- Registrar consulta de um paciente no consultório do Pronto Atendimento e seu resultado\n");
+		printf("47- Internar um paciente em leito da unidade do Pronto Atendimento\n");
+		printf("48- Lançar diária para um paciente em leito da unidade do Pronto Atendimento\n");
+		printf("49- Dar alta a um paciente em leito da unidade do Pronto Atendimento\n");
+		printf("50- Fechar a conta de um paciente\n");
+		printf("51- Emitir despesas de uma paciente\n");
+		printf("52- Emitir fatura de um paciente\n");
+		printf("53- Enviar faturas de pacientes para um determinado convênio\n");
+		printf("54- Emitir relatório de faturamento mensal\n");
+		
 
 		//-------------------------------------
 
