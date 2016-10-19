@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
@@ -56,26 +57,19 @@ if (listadepaciente->proximo == NULL){
 
 Tipopaciente *CadastrarCliente (Lpaciente * listapaciente){
 
-
 Lpaciente *aux;
 aux = crialistapaciente();
-
 
 printf("   digite o nome do paciente  ");
 scanf("%s",aux->paciente.nome);
 printf("   digite o nome codigo do paciente  ");
 scanf("%s",aux->paciente.codigo);
 
-
 Lpaciente *oldhead = listapaciente->proximo;
 listapaciente->proximo = aux;
 aux->proximo = oldhead;
 
-
 }
-
-
-
 
 
 void ImprimeListaPacientes(Lpaciente *listadepaciente){
@@ -93,20 +87,9 @@ if (VerificaListaVaziaPaciente(listadepaciente) == 1){
 
   while (temp != NULL){
 
-
-
-
   printf(" NOME : %s \n",&temp->paciente.nome);
   printf(" CODIGO : %s \n",&temp->paciente.codigo);
-
-
-
-
-
   temp = temp->proximo;
-
-
-
 
   }
 
@@ -116,8 +99,8 @@ if (VerificaListaVaziaPaciente(listadepaciente) == 1){
 
 
 
-/* Essa função retorna o ponteiro de um paciente na lista de pacientes onde podem ser coletadas qualquer informação do paciente
-   para usar essa função crie um variável Lpaciente *NomeDaVariavelTipoPonteiro = SelecionaPaciente;
+/* Essa funÃ§Ã£o retorna o ponteiro de um paciente na lista de pacientes onde podem ser coletadas qualquer informaÃ§Ã£o do paciente
+   para usar essa funÃ§Ã£o crie um variÃ¡vel Lpaciente *NomeDaVariavelTipoPonteiro = SelecionaPaciente;
 
    Ex:
 
@@ -162,27 +145,20 @@ ret = strcmp(cod, listapaciente->paciente.codigo);
 
  if ( ret!=0 && listapaciente->proximo == NULL ){
 
-    printf("CÓDIGO NÃO ENCONTRADO");
+    printf("CÃ“DIGO NÃƒO ENCONTRADO");
 
  }
 
-
 }
-
 
 Tipopaciente *PacienteSelecionado;
 PacienteSelecionado = criapaciente();
 *PacienteSelecionado = listapaciente->paciente ;
-
-
 return PacienteSelecionado;
 
 }
 
-
-
 }
-
 
 
  void PesquisaPaciente (Lpaciente * listapaciente) //Retorna o Ponteiro do TipoCliente em uma lista de LPaciente
@@ -194,40 +170,105 @@ pac = SelecionaPaciente(listapaciente);
 printf(" NOME : %s \n",&pac->nome);
 printf(" CODIGO : %s \n",&pac->codigo);
 
+}
+
+void RemovePaciente (Lpaciente * listapaciente)
+{
+
+if ( VerificaListaVaziaPaciente(listapaciente) == 1 ) {
+
+ printf("A lista se encontra vazia \n");
+
+}
+
+else {
+
+char cod [10];
+int ret ;
+printf("Qual o codigo do paciente deseja remover ? ");
+scanf("%s",cod);
+ret = strcmp(cod, listapaciente->paciente.codigo);
+Lpaciente *antes;
+Lpaciente *pselecionado;
+pselecionado = crialistapaciente();
+
+while ( ret != 0 ){
+
+antes = listapaciente;
+listapaciente= listapaciente->proximo;
+ret = strcmp(cod, listapaciente->paciente.codigo);
+
+
+ if ( ret!=0 && listapaciente->proximo == NULL ){
+
+    printf("CÃ“DIGO NÃƒO ENCONTRADO");
+
+ }
+
+}
+
+if (listapaciente->proximo == NULL){
+
+  antes->proximo = listapaciente->proximo;
+  pselecionado = listapaciente ;
+  free(listapaciente);
+  listapaciente = antes;
+}
+
+}
 
 }
 
 
 
 
+void AlteraCadastroCliente (Lpaciente * listapaciente)
+{
 
-typedef struct Medico {
+if ( VerificaListaVaziaPaciente(listapaciente) == 1 ) {
 
-	char nome [30];
-	char especialidade [20];
-	int CREMEB [8] ;
-	float remuneracao ;
-	float remuneracaocirurgia;
-	Lpaciente *pacientes;
+ printf("A lista se encontra vazia \n");
 
-}; typedef struct Medico Tipomedico;
+}
+
+else {
+
+char cod [10];
+int ret ;
+printf("Qual o codigo do paciente que deseja alterar o cadastro ");
+scanf("%s",cod);
+ret = strcmp(cod, listapaciente->paciente.codigo);
+Lpaciente *antes;
+Lpaciente *pselecionado;
+pselecionado = crialistapaciente();
+
+while ( ret != 0 ){
+
+antes = listapaciente;
+listapaciente= listapaciente->proximo;
+ret = strcmp(cod, listapaciente->paciente.codigo);
 
 
-typedef struct listamedico {
+ if ( ret!=0 && listapaciente->proximo == NULL ){
 
-  Tipomedico  medico;
-  Tipomedico *proximo;
+    printf("CÃ“DIGO NÃƒO ENCONTRADO");
 
-}; typedef struct listamedico Lmedico;
-
+ }
 
 
-int VerificaListaVaziaMedico (){}
+printf("Digite o novo nome do paciente ");
+scanf("%s",listapaciente->paciente.nome);
 
-void imprimetodosmedicos(){}
+
+
+}
+
+}
+
+}
+
 
 Tipopaciente *retornapaciente(){}
-Tipopaciente *retornamedico(){}
 
 
 
@@ -239,7 +280,8 @@ int menu(void)
 	printf("1. Cadastrar paciente \n");
 	printf("2. Imprimir Todos Paciente\n");
     printf("3. Pesquisar Paciente\n");
-    printf("4. Relatório de Pacientes \n");
+    printf("4. Remover Paciete\n");
+    printf("5. Editar Paciete\n");
 	printf("Opcao: "); scanf("%d", &opt);
 
 	return opt;
@@ -259,11 +301,15 @@ void opcao(Lpaciente *lista, int op)
 			ImprimeListaPacientes(lista);
 			break;
         case 3:
-			SelecionaPaciente(lista);
-			break;
-        case 4:
 			PesquisaPaciente(lista);
 			break;
+        case 4:
+			RemovePaciente (lista);
+			break;
+		case 5:
+			AlteraCadastroCliente(lista);
+			break;
+
 
 		default:
 			printf("Comando invalido\n\n");
