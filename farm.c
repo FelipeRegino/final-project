@@ -46,6 +46,16 @@ void insere_farm_satelite(Farmacia* fc, Farmacia* fs){
 	fc->prim = fs;
 }
 
+void libera_farm(Farmacia* f){
+	Farmacia* p = f->prim;
+	while(p!=NULL){
+		Farmacia* t = p->prox;
+		libera_farm(p);
+		p=t;
+	}
+	free(f);
+}
+
 ListaMedicamentos* incializaListaM(){
 	ListaMedicamentos* lista = (ListaMedicamentos*)malloc(sizeof(ListaMedicamentos));
 	return lista;
@@ -58,6 +68,45 @@ void limpa_lista(ListaMedicamentos* Lista){
 
 int Vazia(ListaMedicamentos* Lista){
 	return(Lista->Primeiro == Lista->Ultimo);
+}
+
+Medicamento* inicializaMedicamento(){
+	Medicamento* med = (Medicamento*)malloc(sizeof(Medicamento));
+	return med;
+}
+
+void ModificaMedicamento(Medicamento* med, char c, int q, float i, char n, char t, char l, char v){
+	med->codigo = c;
+	med->qtd = q;
+	med->id = i;
+	med->nome = n;
+	med->tipo = t;
+	med->lote = l;
+	med->validade = v;
+}
+
+void ImprimeMedicamento(Medicamento* m){
+	printf("Nome: %d\n", m->nome);
+	printf("Codigo: %d\n", m->codigo);
+	printf("Quantidade: %i\n", m->qtd);
+	printf("Identificacao: %f\n", m->id);
+	printf("Tipo: %d\n", m->tipo);
+	printf("Lote: %d\n", m->lote);
+	printf("Validade: %d\n", m->validade);
+}
+
+void ImprimeTodosMedicamentos(ListaMedicamentos* Lista){
+	int aux;
+	for(aux = Lista->Primeiro; aux<Lista->Ultimo; aux++){
+		printf("Nome: %d\n", Lista->medicamento[aux].nome);
+		printf("Codigo: %d\n", Lista->medicamento[aux].codigo);
+		printf("Quantidade: %i\n", Lista->medicamento[aux].qtd);
+		printf("Identificacao: %f\n", Lista->medicamento[aux].id);
+		printf("Tipo: %d\n", Lista->medicamento[aux].tipo);
+		printf("Lote: %d\n", Lista->medicamento[aux].lote);
+		printf("Validade: %d\n", Lista->medicamento[aux].validade);
+		printf("--------------------------------------");	
+	}
 }
 
 void insere_medicamento(Medicamento* m, ListaMedicamentos* Lista, char c, int q, float i, char n, char t, char l, char v){
