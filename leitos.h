@@ -12,6 +12,8 @@ typedef struct lista Lista;
 //protótipo das funções
 Lista* criaLista();
 void destroiLista(Lista* li);
+int listaCheia(Lista* li);
+int listaVazia(Lista* li);
 void internaPaciente();
 void liberaPaciente();
 void imprimeRelatorio();

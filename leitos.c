@@ -22,6 +22,20 @@ void destroiLista(Lista* li) {
 	free(li);
 }
 
+int listaCheia(Lista* li) {
+	if(li == NULL) {
+		return -1;	
+	}
+	return (li->qtd == MAX);
+}
+
+int listaVazia(Lista* li) {
+	if(li == NULL) {
+		return -1;	
+	}
+	return (li->qtd == 0);
+}
+
 void internaPaciente() {
 	
 }
@@ -42,7 +56,9 @@ int exibirMenu() {
 	printf("3. Imprimir relatório.\n");
 	printf("4. Criar lista da Semi-UTI.\n");
 	printf("5. Liberar lista.\n");
-	printf("6. Sair\n\n");
+	printf("6. Verificar se a UTI está cheia.\n");
+	printf("7. Verificar se a UTI está vazia.\n");
+	printf("8. Sair\n\n");
 	printf("Selecione a opção desejada.\n");
 }
 
@@ -70,6 +86,16 @@ menu = exibirMenu();
 			destroiLista(li);
 		break;
 		case 6:
+		{
+			int x = listaCheia(li);
+		}
+		break;
+		case 7:
+		{	
+			int y = listaVazia(Lista* li);
+		}
+		break;
+		case 8:
 			printf("Você optou por sair do programa.\n");
 		break;
 		default:
