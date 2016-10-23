@@ -50,7 +50,17 @@ int internaPaciente(Lista* li, struct leitos a) {
 	}
 }
 
-void liberaPaciente() {
+int liberaPaciente(Lista* li) {
+	if(li == NULL) {
+		return 0;
+	}
+	else if(li->qtd == 0) {
+		return 0;
+	}
+	else {
+		li->qtd--;
+		return 1;
+	}
 
 }
 
@@ -86,7 +96,9 @@ menu = exibirMenu();
 		}	
 		break;
 		case 2:
-			liberaPaciente();
+		{
+			int k = liberaPaciente(li);
+		}	
 		break;
 		case 3:
 			imprimeRelatorio();
