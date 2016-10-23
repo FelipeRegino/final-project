@@ -36,8 +36,18 @@ int listaVazia(Lista* li) {
 	return (li->qtd == 0);
 }
 
-void internaPaciente() {
-	
+int internaPaciente(Lista* li, struct leitos a) {
+	if(li == NULL) {
+		return 0;
+	}
+	else if(listaCheia(li)) {
+		return 0;
+	}
+	else {
+		li->dados[li->qtd] = a;
+		li->qtd++;
+		return 1;
+	}
 }
 
 void liberaPaciente() {
@@ -71,7 +81,9 @@ menu = exibirMenu();
 
 	switch (menu) {
 		case 1:
-			internaPaciente();
+		{
+			int w = internaPaciente(li, dados_leitos);
+		}	
 		break;
 		case 2:
 			liberaPaciente();

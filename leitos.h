@@ -14,6 +14,6 @@ Lista* criaLista();
 void destroiLista(Lista* li);
 int listaCheia(Lista* li);
 int listaVazia(Lista* li);
-void internaPaciente();
+int internaPaciente(Lista* li, struct leitos a);
 void liberaPaciente();
 void imprimeRelatorio();
