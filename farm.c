@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define MAX 1000
 
 struct farmacia {
 	char codigo;
 	char local;
-	struct farmacia *prim; 
+	struct farmacia *prim;
 	struct farmacia *prox;
 	char* ListaMedicamentos;
 };
@@ -31,6 +32,32 @@ struct listaMedicamentos{
 
 typedef struct listaMedicamentos ListaMedicamentos;
 
+struct entrada{
+	char medicamento;
+	char farmacia;
+	char data;
+};
+typedef struct entrada Entrada;
+struct transferencia{
+	char medicamento;
+	char farmaciareceptora;
+};
+typedef struct transferencia Transferencia;
+struct recebimento{
+	char medicamento;
+	char farmacia;
+	char situacao;
+};
+typedef struct recebimento Recebimento;
+
+struct registros{
+	Entrada entrada[MAX];
+	Transferencia transferencia[MAX];
+	Recebimento recebimento[MAX];
+	Posicao Primeiro, Ultimo;
+};
+typedef struct registros Registros;
+
 Farmacia* cria_farm_central(char c, char l){
 	Farmacia *f=(Farmacia *) malloc(sizeof(Farmacia));
 	f->codigo = c;
@@ -38,7 +65,7 @@ Farmacia* cria_farm_central(char c, char l){
 	f->ListaMedicamentos = NULL;
 	f->prim = NULL;
 	f->prox = NULL;
-	return f;	
+	return f;
 }
 
 void insere_farm_satelite(Farmacia* fc, Farmacia* fs){
@@ -56,14 +83,15 @@ void libera_farm(Farmacia* f){
 	free(f);
 }
 
-ListaMedicamentos* incializaListaM(){
+ListaMedicamentos* incializaListaM(Farmacia* f){
 	ListaMedicamentos* lista = (ListaMedicamentos*)malloc(sizeof(ListaMedicamentos));
+	f->ListaMedicamentos = lista;
 	return lista;
 }
 
 void limpa_lista(ListaMedicamentos* Lista){
 	Lista->Primeiro = 0;
-	Lista->Ultimo = Lista->Primeiro;	
+	Lista->Ultimo = Lista->Primeiro;
 }
 
 int Vazia(ListaMedicamentos* Lista){
@@ -105,7 +133,7 @@ void ImprimeTodosMedicamentos(ListaMedicamentos* Lista){
 		printf("Tipo: %d\n", Lista->medicamento[aux].tipo);
 		printf("Lote: %d\n", Lista->medicamento[aux].lote);
 		printf("Validade: %d\n", Lista->medicamento[aux].validade);
-		printf("--------------------------------------");	
+		printf("--------------------------------------");
 	}
 }
 
@@ -123,6 +151,55 @@ void insere_medicamento(Medicamento* m, ListaMedicamentos* Lista, char c, int q,
 		m->validade = v;
 		Lista->medicamento[Lista->Ultimo] = *m;
 		Lista->Ultimo++;
+	}
+}
+
+Medicamento* retiraMedicamento(Posicao p, ListaMedicamentos* Lista){
+	int aux; Medicamento* medicamento;
+	medicamento = (Medicamento*)malloc(sizeof(Medicamento));
+
+	if(Vazia(Lista) || p>=Lista->Ultimo){
+		printf("Posição não exite\n");
+		return NULL;
+	}
+
+	*medicamento = Lista->medicamento[p];
+	Lista->Ultimo--;
+	for(aux = p; aux<Lista->Ultimo; aux++){
+		Lista->medicamento[aux] = Lista->medicamento[aux+1];
+	}
+	return medicamento;
+}
+
+void trasfereMedicamento(Farmacia* fc, Farmacia* fs, Posicao p){
+	Medicamento* m = retiraMedicamento(p,fc->ListaMedicamentos);
+	ListaMedicamentos* l = fs->ListaMedicamentos;
+	l->medicamento[l->Ultimo] = *m;
+	l->Ultimo++;
+}
+
+void registraEntrada(Entrada* entrada, Registros* registros, char f, char m, char d){
+	if(registros->Ultimo>=MAX){
+		printf("Lista cheia\n");
+	}
+	else{
+		entrada->farmacia = f;
+		entrada->medicamento = m;
+		entrada->data = d;
+		registros->entrada[registros->Ultimo] = *entrada;
+		registros->Ultimo++;
+	}
+}
+
+void registraTransferencia(Transferencia* transferencia, Registros* registros, char m, char f){
+	if(registros->Ultimo>=MAX){
+		printf("Lista cheia\n");
+	}
+	else{
+		transferencia->farmaciareceptora = f;
+		transferencia->medicamento = m;
+		registros->transferencia[registros->Ultimo] = *transferencia;
+		registros->Ultimo++;
 	}
 }
 
