@@ -76,6 +76,17 @@ void imprimeRelatorio(Lista* li) {
 	}
 }
 
+void imprimediaria(Lista* li){
+	if(li == NULL){
+		printf ("Lista vazia.\n");
+	}
+	else {
+		printf ("%c\n", struct leitos.status); // Sendo que o usuário seja algum trabalhor do hospital e atualize a ficha do paciente.
+	}
+}
+
+
+
 int exibirMenu() {
 	
 	printf("\t UNIDADE DE TRATAMENTO SEMI-INTENSIVO\n\n");
