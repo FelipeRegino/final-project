@@ -76,13 +76,13 @@ int exibirMenu() {
 	printf("3. Imprimir relatório.\n");
 	printf("4. Criar lista da Semi-UTI.\n");
 	printf("5. Liberar lista.\n");
-	printf("6. Verificar se a UTI está cheia.\n");
-	printf("7. Verificar se a UTI está vazia.\n");
+	printf("6. Verificar se o leito echeio.\n");
+	printf("7. Verificar se o leito está vazio.\n");
 	printf("8. Sair\n\n");
 	printf("Selecione a opção desejada.\n");
 }
 
-//main program
+//programa principal
 int main() {
 
 Lista *li;
