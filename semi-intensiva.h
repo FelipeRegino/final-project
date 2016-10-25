@@ -16,4 +16,7 @@ int listaCheia(Lista* li);
 int listaVazia(Lista* li);
 int internaPaciente(Lista* li, struct leitos a);
 int liberaPaciente(Lista* li);
+int buscarItem(Lista* li, int leitos, struct leitos *a);
 void imprimeRelatorio(Lista* li);
+void imprimeDiaria(Lista* li);
+

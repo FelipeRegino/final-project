@@ -36,7 +36,7 @@ int listaVazia(Lista* li) {
 	return (li->qtd == 0);
 }
 
-int internaPaciente(Lista* li, struct leitos a) {
+int internaPaciente(Lista* li, struct leitos *a) {
 	if(li == NULL) {
 		return 0;
 	}
@@ -76,28 +76,57 @@ void imprimeRelatorio(Lista* li) {
 	}
 }
 
+<<<<<<< HEAD:leitos.c
 void imprimediaria(Lista* li){
+=======
+int buscarItem(Lista* li, int leitos, struct leitos *a) {
+	if(li == NULL) {
+		return 0;
+	}
+	int k,i = 0;
+	while(i<li->qtd && li->dados[i].*leitos != leitos) {
+		i++;
+	}
+	if(i == li->qtd) { //item não encontrado
+		return 0;
+	}
+
+	*a = li->dados[i];
+	return 1;
+}
+
+void imprimeDiaria(Lista* li){
+>>>>>>> modifica nome dos arquivos para semi-intensiva e implementa outras funÃ§Ãµes adicionais.:semi-intensiva.c
 	if(li == NULL){
 		printf ("Lista vazia.\n");
 	}
 	else {
+<<<<<<< HEAD:leitos.c
 		printf ("%c\n", struct leitos.status); // Sendo que o usuário seja algum trabalhor do hospital e atualize a ficha do paciente.
 	}
 }
 
 
 
+=======
+		printf ("%c\n", struct leitos.status); // Supondo que o  usuário seja algum servidor do hospital e atualize a ficha do paciente.
+	}
+}
+
+>>>>>>> modifica nome dos arquivos para semi-intensiva e implementa outras funÃ§Ãµes adicionais.:semi-intensiva.c
 int exibirMenu() {
 	
 	printf("\t UNIDADE DE TRATAMENTO SEMI-INTENSIVO\n\n");
-	printf("1. Internar paciente.\n");
-	printf("2. Liberar paciente.\n");
-	printf("3. Imprimir relatório.\n");
-	printf("4. Criar lista da SEMI-UTI.\n");
-	printf("5. Liberar lista.\n");
+	printf("1. Criar lista da SEMI-UTI.\n");
+	printf("2. Liberar lista.\n");
+	printf("3. Internar paciente.\n");
+	printf("4. Liberar paciente.\n");
+	printf("5. Imprimir relatório.\n");
 	printf("6. Verificar se a SEMI-UTI está cheia.\n");
 	printf("7. Verificar se a SEMI-UTI está vazia.\n");
-	printf("8. Sair.\n\n");
+	printf("8. Fazer busca na lista.\n");
+	printf("9. Imprimir diária do paciente.\n");
+	printf("10. Sair.\n\n");
 	printf("Selecione a opção desejada.\n");
 }
 
@@ -111,22 +140,22 @@ menu = exibirMenu();
 	switch (menu) {
 		case 1:
 		{
-			int w = internaPaciente(li, dados_leitos);
+			li = criaLista();
 		}	
 		break;
 		case 2:
 		{
-			int k = liberaPaciente(li);
+			destroiLista(li);
 		}	
 		break;
 		case 3:
-			imprimeRelatorio(li);
+			int w = internaPaciente(li, &dados_leitos);
 		break;
 		case 4:
-			li = criaLista();
+			int k = liberaPaciente(li);
 		break;
 		case 5:
-			destroiLista(li);
+			imprimeRelatorio(li);
 		break;
 		case 6:
 		{
@@ -139,6 +168,11 @@ menu = exibirMenu();
 		}
 		break;
 		case 8:
+		{
+			int a = buscarItem(li, posicao, &dados_leitos);
+		}	
+		break;
+		case 9:
 			printf("Você optou por sair do programa.\n");
 		break;
 		default:
