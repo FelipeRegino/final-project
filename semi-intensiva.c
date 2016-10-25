@@ -96,24 +96,14 @@ int buscarItem(Lista* li, int leitos, struct leitos *a) {
 }
 
 void imprimeDiaria(Lista* li){
->>>>>>> modifica nome dos arquivos para semi-intensiva e implementa outras fun√ß√µes adicionais.:semi-intensiva.c
 	if(li == NULL){
 		printf ("Lista vazia.\n");
 	}
 	else {
-<<<<<<< HEAD:leitos.c
 		printf ("%c\n", struct leitos.status); // Sendo que o usu·rio seja algum trabalhor do hospital e atualize a ficha do paciente.
 	}
 }
 
-
-
-=======
-		printf ("%c\n", struct leitos.status); // Supondo que o  usu·rio seja algum servidor do hospital e atualize a ficha do paciente.
-	}
-}
-
->>>>>>> modifica nome dos arquivos para semi-intensiva e implementa outras fun√ß√µes adicionais.:semi-intensiva.c
 int exibirMenu() {
 	
 	printf("\t UNIDADE DE TRATAMENTO SEMI-INTENSIVO\n\n");
@@ -173,6 +163,9 @@ menu = exibirMenu();
 		}	
 		break;
 		case 9:
+			imprimeDiaria(Lista* li);
+		break;
+		case 10:
 			printf("VocÍ optou por sair do programa.\n");
 		break;
 		default:
