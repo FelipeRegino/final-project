@@ -41,19 +41,13 @@ typedef struct entrada Entrada;
 struct transferencia{
 	char medicamento;
 	char farmaciareceptora;
+	char status;
 };
 typedef struct transferencia Transferencia;
-struct recebimento{
-	char medicamento;
-	char farmacia;
-	char situacao;
-};
-typedef struct recebimento Recebimento;
 
 struct registros{
 	Entrada entrada[MAX];
 	Transferencia transferencia[MAX];
-	Recebimento recebimento[MAX];
 	Posicao Primeiro, Ultimo;
 };
 typedef struct registros Registros;
@@ -198,8 +192,29 @@ void registraTransferencia(Transferencia* transferencia, Registros* registros, c
 	else{
 		transferencia->farmaciareceptora = f;
 		transferencia->medicamento = m;
+		transferencia->status = "Pendente";
 		registros->transferencia[registros->Ultimo] = *transferencia;
 		registros->Ultimo++;
+	}
+}
+
+void registraRecebimento(Transferencia* transferencia){
+	transferencia->status = "recebido";
+}
+
+void ImprimeTodosRegistros(Registros* registros){
+	int aux;
+	printf("Entradas de medicamentos: ");
+	for(aux = registros->entrada; aux<registros->Ultimo; aux++){
+		printf("Medicamento: %d\n", registros->entrada[aux].medicamento);
+		printf("Data: %d\n", registros->entrada[aux].data);
+	}
+	
+	printf("Transferencias: ");
+	for(aux = registros->transferencia; aux<registros->Ultimo; aux++){
+		printf("Medicamento: %d\n", registros->transferencia[aux].medicamento);
+		printf("Enviado para: %d\n", registros->transferencia[aux].farmaciareceptora);
+		printf("Status: %d\n", registros->transferencia[aux].status);
 	}
 }
 
