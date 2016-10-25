@@ -1,10 +1,9 @@
 #define MAX 50
 
 struct leitos {
-	char paciente[30];
-	char medico[30];
 	char code[2];
 	char status;
+	*leitos;
 };
 
 typedef struct lista Lista;
