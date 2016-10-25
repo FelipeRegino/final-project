@@ -64,8 +64,16 @@ int liberaPaciente(Lista* li) {
 
 }
 
-void imprimeRelatorio() {
-
+void imprimeRelatorio(Lista* li) {
+	int i;
+	if(li == NULL) {
+		printf("Lista vazia.\n");
+	}
+	else {
+		for(i=0; i<=MAX; i++) {
+			printf("%c %c %c %c\n", struct lista.leitos dados);
+		}
+	}
 }
 
 int exibirMenu() {
@@ -74,11 +82,11 @@ int exibirMenu() {
 	printf("1. Internar paciente.\n");
 	printf("2. Liberar paciente.\n");
 	printf("3. Imprimir relatório.\n");
-	printf("4. Criar lista da Semi-UTI.\n");
+	printf("4. Criar lista da enfermaria.\n");
 	printf("5. Liberar lista.\n");
-	printf("6. Verificar se o leito está cheio.\n");
-	printf("7. Verificar se o leito está vazio.\n");
-	printf("8. Sair\n\n");
+	printf("6. Verificar se a enfermaria está cheia.\n");
+	printf("7. Verificar se a enfermaria está vazia.\n");
+	printf("8. Sair.\n\n");
 	printf("Selecione a opção desejada.\n");
 }
 
@@ -101,7 +109,7 @@ menu = exibirMenu();
 		}	
 		break;
 		case 3:
-			imprimeRelatorio();
+			imprimeRelatorio(li);
 		break;
 		case 4:
 			li = criaLista();

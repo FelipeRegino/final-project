@@ -1,4 +1,4 @@
-#define MAX 100
+#define MAX 50
 
 struct leitos {
 	char paciente[30];
@@ -16,4 +16,4 @@ int listaCheia(Lista* li);
 int listaVazia(Lista* li);
 int internaPaciente(Lista* li, struct leitos a);
 int liberaPaciente(Lista* li);
-void imprimeRelatorio();
+void imprimeRelatorio(Lista* li);
