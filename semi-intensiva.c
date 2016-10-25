@@ -76,9 +76,6 @@ void imprimeRelatorio(Lista* li) {
 	}
 }
 
-<<<<<<< HEAD:leitos.c
-void imprimediaria(Lista* li){
-=======
 int buscarItem(Lista* li, int leitos, struct leitos *a) {
 	if(li == NULL) {
 		return 0;
