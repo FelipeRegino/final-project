@@ -44,27 +44,20 @@ system("cls");
 
 printf(" ================ TELA DE CADASTRO DE PACIENTES ================ \n \n");
 
+char temp;
 
 Lpaciente *aux;
 aux = crialistapaciente();
-char letra;
-
 printf("   Qual tipo de atendimento  1-Pronto A., 2-Ambulatorial, 3-internamento  ");
-scanf("%c",&letra);
-aux->paciente.Tipoatendimento = letra;
-
-
-
-
+scanf("%s",aux->paciente.Tipoatendimento);
 printf("   Digite o codigo do paciente ");
 scanf("%s",aux->paciente.codigo);
 printf("   Digite o nome do paciente  ");
 scanf("%s",aux->paciente.nome);
 printf("   Digite a Enfermidade do paciente  ");
 scanf("%s",aux->paciente.Enfermidade);
-
 printf("   Qual tipo de acomodacao 1- Leito Pronto A, 2-Enfermaria, 3-Apartamento, 4-Semi-intensiva, 5-Intensiva ");
-scanf("%c",&aux->paciente.Tipodeacomodacao);
+scanf("%s",aux->paciente.Tipodeacomodacao);
 printf("   Qual o plano de saude  ");
 scanf("%s",aux->paciente.CodigodoPlano);
 Lpaciente *oldhead = listapaciente->proximo;
