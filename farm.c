@@ -169,7 +169,7 @@ void ImprimeTodosRegistros(Registros* registros){
 		printf("Medicamento: %d\n", registros->entrada[aux].medicamento);
 		printf("Data: %d\n", registros->entrada[aux].data);
 	}
-	
+
 	printf("Transferencias: ");
 	for(aux = registros->transferencia; aux<registros->Ultimo; aux++){
 		printf("Medicamento: %d\n", registros->transferencia[aux].medicamento);
