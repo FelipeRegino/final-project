@@ -33,7 +33,7 @@ typedef struct Paciente{
     float *conta;
     char plano[8];
     int *prontuario;
-} paciente;
+};
 
 typedef struct Paciente Tipopaciente;
 
@@ -59,7 +59,18 @@ typedef struct Uti{
     char situacao [1]; //1 = livre, 2 = ocupado;
     int *p_paciente;
     int *p_leito;
-}uti;
+};
+
+typedef struct Uti tipoUTI;
+
+typedef struct listaUtis {
+   tipoUTI  uti;
+   tipoUTI *proximo;
+   tipoUTI *primeiro;
+   tipoUTI *ultimo;
+
+};
+typedef struct listaUtis lUTI;
 
 typedef struct UnidadeExamedeImagem{
     char codigo[2];
@@ -112,6 +123,12 @@ tipoExameImagem *criaExameImagem (){ //cria um novo exame de imagem
     return novo;
 }
 
+tipoUTI *criaUTI (){ //cria uma nova uti
+    tipoUTI *novo;
+    novo = (tipoUTI *)malloc(sizeof(tipoUTI));
+    return novo;
+}
+
 Lpacientes *criaListadePacientes (){              //cria lista de pacientes
     Lpacientes *novo;
     novo = (Lpacientes *)malloc(sizeof(Lpacientes));
@@ -119,9 +136,16 @@ Lpacientes *criaListadePacientes (){              //cria lista de pacientes
     return novo;
 }
 
-Lpacientes *criaListadeExamesImagem (){         //cria lista de exames de imagem
+lExameImagem *criaListadeExamesImagem (){         //cria lista de exames de imagem
     lExameImagem *novo;
     novo = (lExameImagem *)malloc(sizeof(lExameImagem));
+    novo->proximo = NULL;
+    return novo;
+}
+
+lUTI *criaListadeUTI (){              //cria lista de UTI
+    lUTI *novo;
+    novo = (lUTI *)malloc(sizeof(lUTI));
     novo->proximo = NULL;
     return novo;
 }
@@ -135,6 +159,13 @@ int semPacientes (Lpacientes *listapacientes){ //verifica se a lista de paciente
 
 int semExamesdeImagem (lExameImagem *listaExames){ //verifica se a lista de exames de imagem está vazia
     if (listaExames->proximo == NULL){
+        return 1;
+    }
+        return 0;
+}
+
+int semUTI (lUTI *listaUtis){ //verifica se a lista de UTIs está vazia
+    if (listaUtis->proximo == NULL){
         return 1;
     }
         return 0;
@@ -155,6 +186,28 @@ void excluiPaciente (Lpacientes * listapacientes, int v){ //v é o código do pa
         return;
         if (p == listapacientes->primeiro && p == listapacientes->ultimo){
         listapacientes->primeiro = listapacientes->ultimo = NULL;
+        free (p);
+        return;
+        }
+        }
+    }
+}
+
+void excluiUTI (lUTI * listaUtis, int c){ //c é o código da UTI
+     lUTI *ant = NULL;
+     lUTI *p = listaUtis->primeiro;
+
+     if (semUTI(listaUtis) == 1 ) {
+        printf(" -- Não há UTI's cadastradas. \n");
+    } else
+    if (semUTI(listaUtis) == 0) {
+     while(p != NULL && p->uti.codigo!=c){
+      ant = p;
+      p = p->proximo;
+        if (p == NULL)
+        return;
+        if (p == listaUtis->primeiro && p == listaUtis->ultimo){
+        listaUtis->primeiro = listaUtis->ultimo = NULL;
         free (p);
         return;
         }
@@ -196,6 +249,18 @@ void listaPacientesCadastrados(Lpacientes * listapacientes){
         printf(" -- TIPO DE ATENDIMENTO: %s ",&aux->paciente.tipoAtendimento);
         printf(" -- TIPO DE ACOMODAÇÃO: %s ",&aux->paciente.tipoAcomodacao);
         printf(" -- TIPO DE PLANO: %s ",&aux->paciente.plano);
+        aux = aux->proximo;
+        }
+    }
+
+void listaUTIcadastradas(lUTI * listaUtis){
+
+    lUTI *aux = listaUtis->primeiro;
+
+        while (aux != NULL){
+        printf("---------- INFORMAÇÕES DAS UTIs ----------");
+        printf(" -- CÓDIGO: %s ",&aux->uti.codigo);
+        printf(" -- SITUAÇÃO: %s ",&aux->uti.situacao);
         aux = aux->proximo;
         }
     }
@@ -264,6 +329,23 @@ Tipopaciente *inserePaciente(Lpacientes *listapacientes){
             //buscaPaciente (Lpacientes * listapacientes);
           break;
     }
+}
+
+tipoUTI *insereUTI(lUTI *listaUtis){
+
+    printf("----------------------------------------------------------------\n");
+    printf("------------ BEM VINDO AO CADASTRO DE UTIs ---------\n");
+    printf("------------ INFORME OS DADOS SOLICITADOS:  -----------\n");
+    lUTI *aux;
+    aux = criaListadeUTI();
+    printf(" ----- Código da UTI: \n");
+    scanf("%s",aux->uti.codigo);
+    printf(" ----- Situação da UTI: \n");
+    scanf("%s",aux->uti.situacao);
+
+    lUTI *antigo = listaUtis->proximo;
+    listaUtis->proximo = aux;
+    aux->proximo = antigo;
 }
 
 tipoExameImagem *insereExamedeImagem(lExameImagem *listaExames){
