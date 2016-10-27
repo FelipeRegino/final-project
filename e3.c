@@ -4,7 +4,7 @@
 //1) Criar cada uma das estruturas
 //2) Fazer cada uma das estruturas vazia
 //3) Teste se está vazia, para cada uma das estruturas
-//4) Teste se está cheia, para cada uma das estruturas
+//4) Teste se está cheia, par   a cada uma das estruturas
 //5) Inserir item em cada uma das estruturas
 //6) Retirar item em cada uma das estruturas
 //7) Listar todos os elementos de cada uma das estruturas
@@ -19,24 +19,32 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int op=-1; //Variável de controle do menu de opções
 
 typedef struct Paciente{
     char codigo[10];
     char nome[40];
-    int *medico;  //ponteiro para código do médico
+    char *medico;  //ponteiro para código do médico
     char enfermidade[50];
     char tipoAtendimento[1]; //1-Pronto A., 2-Ambulatorial, 3-Internamento;
     char tipoAcomodacao[1]; //1-Leito Pronto, 2-Enfermaria, 3-Apartamento, 4-Semi-intensiva, 5-intensiva //ver como será a alta
-    int *conta;
+    float *conta;
     char plano[8];
     int *prontuario;
-};
+} paciente;
 
-struct Paciente *primeiro;
-struct Paciente *proximo;
-struct Paciente *ultimo;
+typedef struct Paciente Tipopaciente;
+
+typedef struct listapacientes {
+   Tipopaciente  paciente;
+   Tipopaciente *proximo;
+   Tipopaciente *primeiro;
+   Tipopaciente *ultimo;
+
+};
+typedef struct listapacientes Lpacientes;
 
 
 typedef struct DiariaPaciente{
@@ -68,7 +76,18 @@ typedef struct ExamedeImagem{
     int *medico;        //código do médico
     int *paciente;      //código do paciente
     char resultado[500];
-}eimagem;
+} exame;
+
+typedef struct ExamedeImagem tipoExameImagem;
+
+typedef struct listaExames {
+   tipoExameImagem  exame;
+   tipoExameImagem *proximo;
+   tipoExameImagem *primeiro;
+   tipoExameImagem *ultimo;
+
+};
+typedef struct listaExames lExameImagem;
 
 typedef struct medico{
     char codigo[8];
@@ -80,30 +99,195 @@ typedef struct medico{
 
 }medico;
 
-void FlistaPacientesVazia(){
-    struct Paciente *aux;
-    aux = (struct Paciente *)malloc(sizeof(struct Paciente));
-    primeiro = aux;
-    ultimo = primeiro;
 
+Tipopaciente *criaPaciente (){ //cria um novo paciente
+    Tipopaciente *novo;
+    novo = (Tipopaciente *)malloc(sizeof(Tipopaciente));
+    return novo;
 }
 
-void InserePaciente(char cod, char n, char enf, char tAtendimento, char tAcomodacao, int c, char p){
-    struct Paciente *aux;
-    aux = (struct Paciente *)malloc(sizeof(struct Paciente));
-    aux->codigo = cod;
-    aux->nome = n;
-    aux->enfermidade = enf;
-    aux->tipoAtendimento = ttendimento;
-    aux->tipoAcomodacao = tAcomodacao;
-    aux->conta = c;
-    aux->plano = p;
-    ultimo->proximo = aux;
-    ultimo = ultimo->prox;
-    aux->proximo = NULL;
+tipoExameImagem *criaExameImagem (){ //cria um novo exame de imagem
+    tipoExameImagem *novo;
+    novo = (tipoExameImagem *)malloc(sizeof(tipoExameImagem));
+    return novo;
 }
 
-void menuloop(int op){ //função para menu de interação com o usuário
+Lpacientes *criaListadePacientes (){              //cria lista de pacientes
+    Lpacientes *novo;
+    novo = (Lpacientes *)malloc(sizeof(Lpacientes));
+    novo->proximo = NULL;
+    return novo;
+}
+
+Lpacientes *criaListadeExamesImagem (){         //cria lista de exames de imagem
+    lExameImagem *novo;
+    novo = (lExameImagem *)malloc(sizeof(lExameImagem));
+    novo->proximo = NULL;
+    return novo;
+}
+
+int semPacientes (Lpacientes *listapacientes){ //verifica se a lista de pacientes está vazia
+    if (listapacientes->proximo == NULL){
+        return 1;
+    }
+        return 0;
+}
+
+int semExamesdeImagem (lExameImagem *listaExames){ //verifica se a lista de exames de imagem está vazia
+    if (listaExames->proximo == NULL){
+        return 1;
+    }
+        return 0;
+}
+
+void excluiPaciente (Lpacientes * listapacientes, int v){ //v é o código do paciente
+     Lpacientes *ant = NULL;
+     Lpacientes *p = listapacientes->primeiro;
+
+     if (semPacientes(listapacientes) == 1 ) {
+        printf(" -- Não há pacientes cadastrados. \n");
+    } else
+    if (semPacientes(listapacientes) == 0) {
+     while(p != NULL && p->paciente.codigo!=v){
+      ant = p;
+      p = p->proximo;
+        if (p == NULL)
+        return;
+        if (p == listapacientes->primeiro && p == listapacientes->ultimo){
+        listapacientes->primeiro = listapacientes->ultimo = NULL;
+        free (p);
+        return;
+        }
+        }
+    }
+}
+
+void excluiExamedeImagem (lExameImagem * listaExames, int c){ //c é o código do exame de imagem
+     lExameImagem *ant = NULL;
+     lExameImagem *p = listaExames->primeiro;
+
+     if (semExamesdeImagem(listaExames) == 1 ) {
+        printf(" -- Não há exames de imagem disponíveis. \n");
+    } else
+    if (semExamesdeImagem(listaExames) == 0) {
+     while(p != NULL && p->exame.codigoexame !=c){
+      ant = p;
+      p = p->proximo;
+        if (p == NULL)
+        return;
+        if (p == listaExames->primeiro && p == listaExames->ultimo){
+        listaExames->primeiro = listaExames->ultimo = NULL;
+        free (p);
+        return;
+        }
+        }
+    }
+}
+
+void listaPacientesCadastrados(Lpacientes * listapacientes){
+
+    Lpacientes *aux = listapacientes->primeiro;
+
+        while (aux != NULL){
+        printf("---------- INFORMAÇÕES DOS PACIENTES ----------");
+        printf(" -- NOME: %s ",&aux->paciente.nome);
+        printf(" -- CÓDIGO: %s ",&aux->paciente.codigo);
+        printf(" -- ENFERMIDADE: %s ",&aux->paciente.enfermidade);
+        printf(" -- TIPO DE ATENDIMENTO: %s ",&aux->paciente.tipoAtendimento);
+        printf(" -- TIPO DE ACOMODAÇÃO: %s ",&aux->paciente.tipoAcomodacao);
+        printf(" -- TIPO DE PLANO: %s ",&aux->paciente.plano);
+        aux = aux->proximo;
+        }
+    }
+
+void listaExamesdeImagem(lExameImagem * listaExames){
+
+    lExameImagem *aux = listaExames->primeiro;
+
+        while (aux != NULL){
+        printf("---------- INFORMAÇÕES DOS EXAMES DE IMAGEM ----------");
+        printf(" -- CÓDIGO: %s ",&aux->exame.codigoexame);
+        printf(" -- RESULTADO: %s ",&aux->exame.codigoexame);
+        aux = aux->proximo;
+        }
+    }
+
+Tipopaciente *inserePaciente(Lpacientes *listapacientes){
+
+    int opp; //varivel de controle de operações com um paciente
+
+    printf("----------------------------------------------------------------\n");
+    printf("---------------- BEM VINDO AO CADASTRO DE PACIENTES ------------\n");
+    printf("----------------- INFORME OS DADOS SOLICITADOS:  ---------------\n");
+    Lpacientes *aux;
+    aux = criaListadePacientes();
+    printf(" ----- Nome do paciente: \n");
+    scanf("%s",aux->paciente.nome);
+    printf(" ----- Codigo do paciente: \n");
+    scanf("%s",aux->paciente.codigo);
+    printf(" ----- Enfermidade do paciente: \n");
+    scanf("%s",aux->paciente.enfermidade);
+    printf(" ----- Tipo de atendimento do paciente: \n");
+    printf(" (1) Pronto Antendimento | (2) Ambulatorial | (3) Internamento \n");
+    scanf("%s",aux->paciente.tipoAtendimento);
+    printf(" ----- Tipo de acomodaçãp do paciente: \n");
+    printf(" (1) Leito Pronto | (2) Enfermaria | (3) Apartamento | (4) Semi-intensiva | (5) intensiva \n");
+    scanf("%s",aux->paciente.tipoAcomodacao);
+    printf(" ----- Plano de saúde do paciente: \n");
+    scanf("%s",aux->paciente.plano);
+
+    Lpacientes *antigo = listapacientes->proximo;
+    listapacientes->proximo = aux;
+    aux->proximo = antigo;
+    printf("----------------------------------------------------------------\n");
+    printf("\n -- PACIENTE INSERIDO NO SISTEMA... -- \n");
+    getchar();
+    printf("----------------------------------------------------------------\n");
+    printf("\n     -- MAIS OPÇÕES PARA PACIENTE: -- \n");
+    printf("     (1) Listar pacientes cadastrados; \n");
+    printf("     (2) Cadastrar novo paciente; \n");
+    printf("     (3) Excluir cadastro de um paciente; \n");
+    printf("     (4) Buscar um paciente; \n");
+    scanf("%d", &opp);
+
+    switch (opp){   //Gerencia as opções de gerenciamento dos pacientes
+        case 1:
+           // listaPacientesCadastrados(Lpacientes* listapacientes);
+            break;
+        case 2:
+            //inserePaciente(Lpacientes* listapacientes);
+            break;
+        case 3:
+            //excluiPaciente (Lpacientes * listapacientes);
+            break;
+        case 4:
+            //buscaPaciente (Lpacientes * listapacientes);
+          break;
+    }
+}
+
+tipoExameImagem *insereExamedeImagem(lExameImagem *listaExames){
+
+    printf("----------------------------------------------------------------\n");
+    printf("------------ BEM VINDO AO CADASTRO DE EXAMES DE IMAGEM ---------\n");
+    printf("----------------- INFORME OS DADOS SOLICITADOS:  ---------------\n");
+    lExameImagem *aux;
+    aux = criaListadeExamesImagem();
+    printf(" ----- Código do Exame: \n");
+    scanf("%s",aux->exame.codigoexame);
+    printf(" ----- Resultado do Exame: \n");
+    scanf("%s",aux->exame.resultado);
+
+    lExameImagem *antigo = listaExames->proximo;
+    listaExames->proximo = aux;
+    aux->proximo = antigo;
+}
+
+    void menuloop(int op){  //função para menu de interação com o usuário
+
+    Lpacientes *listapacientes;
+    listapacientes = criaListadePacientes();
+
     while (op!=0 || op<=5){
         printf("-------------------- BEM VINDO AO MÓDULO 3 --------------------\n");
         printf("----------------------- AQUI VOCÊ PODE: -----------------------\n");
@@ -115,13 +299,19 @@ void menuloop(int op){ //função para menu de interação com o usuário
         printf("----- (5) REGISTRAR RESULTADO DO EXAME DE IMAGEM DE UM PACIENTE;\n");
         printf("----- (0) Digite 0 para sair da execução...\n");
         printf("---------------------------------------------------------------\n");
-        printf("- Escolha a opção correspondente: ________ ");
+        printf("- Escolha a opção correspondente:  ");
         scanf("%d", &op);
         printf("---------------------------------------------------------------\n");
+
+        switch(op){
+        case 1:
+            inserePaciente(listapacientes);
+            break;
+        }
     }
 }
 
 void main(){
+
     menuloop(op);
 }
-
