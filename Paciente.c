@@ -97,8 +97,8 @@ if (VerificaListaVaziaPaciente(listadepaciente) == 1){
 
 
 
-/* Essa funÃ§Ã£o retorna o ponteiro de um paciente na lista de pacientes onde podem ser coletadas qualquer informaÃ§Ã£o do paciente
-   para usar essa funÃ§Ã£o crie um variÃ¡vel Lpaciente *NomeDaVariavelTipoPonteiro = SelecionaPaciente;
+/* Essa função retorna o ponteiro de um paciente na lista de pacientes onde podem ser coletadas qualquer informação do paciente
+   para usar essa função crie um variável Lpaciente *NomeDaVariavelTipoPonteiro = SelecionaPaciente;
    Ex:
   ==================================================================================
    Tipopaciente *DadosDoPaciente = SelecionaPaciente (Tipopaciente * listadepacientes) ;
@@ -206,7 +206,7 @@ ret = strcmp(cod, listapaciente->paciente.codigo);
 
  if ( ret!=0 && listapaciente->proximo == NULL ){
 
-    printf("CÃ“DIGO NÃƒO ENCONTRADO");
+    printf("CÓDIGO NÃO ENCONTRADO");
 
  }
 
@@ -256,7 +256,7 @@ ret = strcmp(cod, listapaciente->paciente.codigo);
 
  if ( ret!=0 && listapaciente->proximo == NULL ){
 
-    printf("CÃ“DIGO NÃƒO ENCONTRADO");
+    printf("CÓDIGO NÃO ENCONTRADO");
 
  }
 

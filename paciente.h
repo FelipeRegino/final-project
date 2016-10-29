@@ -1,8 +1,10 @@
+
+
 typedef struct Paciente{
 
 	char nome [30];
 	char codigo[10] ;
-    //*Médico
+    //Lista *pmedico;
 	char Enfermidade[50];
 	char Tipoatendimento [1];
     char Tipodeacomodacao [1];
