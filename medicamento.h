@@ -1,3 +1,6 @@
+/*Neste arquivo constam a estrutura do item Medicamento e a estrutura de filas
+do mesmo. Também constam as funções de inicialização e manipulação*/
+
 /////////ESTRUTURA////////////
 struct medicamento {
   char codigo_item[10];

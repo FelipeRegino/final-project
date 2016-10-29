@@ -1,3 +1,5 @@
+/*Neste arquivo constam a estrutura do item Consulta e a estrutura de filas
+do mesmo. Também constam as funções de inicialização e manipulação*/
 
 /////////ESTRUTURA////////////
 struct consulta {
@@ -90,8 +92,8 @@ void ImprimeListaConsulta(ListaConsulta *listaconsulta){
 
         while (temp != NULL){
 
-            printf(" NOME : %s \n",&temp->consulta.nome);
-            printf(" CODIGO : %s \n",&temp->consulta.codigo_item);
+            printf("NOME : %s \n",&temp->consulta.nome);
+            printf("CODIGO : %s \n",&temp->consulta.codigo_item);
             printf("VALOR : %f \n",&temp->consulta.valor);
             temp = temp->proximo;
 

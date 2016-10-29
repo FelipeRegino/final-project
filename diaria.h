@@ -1,3 +1,6 @@
+/*Neste arquivo constam a estrutura do item Diaria e a estrutura de filas
+do mesmo. Também constam as funções de inicialização e manipulação*/
+
 /////////ESTRUTURA////////////
 struct valores {
   char codigo_item[10];
@@ -46,7 +49,6 @@ if (listadiaria->proximo == NULL){
 //////////////CADASTRO DE DIARIA////////////////
 TipoDiaria *CadastrarDiaria (ListaDiaria * listadiaria){
 
-//system("clear");
 
 printf(" ================ TELA DE CADASTRO DE DIARIAS ================ \n \n");
 
@@ -85,9 +87,9 @@ if (VerificaListaVaziaDiaria(listadiaria) == 1){
 
   while (temp != NULL){
 
-  printf("codigo : %s \n",&temp->diaria.codigo_item);
-  printf("nome : %s \n",&temp->diaria.nome);
-  printf("valor : %f \n",&temp->diaria.valor);
+  printf("CODIGO : %s \n",&temp->diaria.codigo_item);
+  printf("NOME : %s \n",&temp->diaria.nome);
+  printf("VALOR : %f \n",&temp->diaria.valor);
   temp = temp->proximo;
 
   }

@@ -1,3 +1,6 @@
+/*Neste arquivo constam a estrutura do item procedimento e a estrutura de filas
+do mesmo. Também constam as funções de inicialização e manipulação*/
+
 /////////ESTRUTURA////////////
 struct procedimento {
   char codigo_item[10];
@@ -35,7 +38,6 @@ ListaProcedimento *crialistaprocedimento (){
 
 
 
-
 ///////////VERIFICAR LISTA VAZIA/////////////////
 int VerificaListaVaziaProcedimento (ListaProcedimento *listaprocedimento){
 
@@ -59,9 +61,9 @@ TipoConsulta *CadastrarProcedimento (ListaProcedimento *listaprocedimento){
     ListaProcedimento *aux;
     aux = crialistaprocedimento();
 
-    printf("   Digite o codigo do procedimento ");
+    printf("Digite o codigo do procedimento ");
     scanf("%s",aux->procedimento.codigo_item);
-    printf("   Digite o nome do procedimento  ");
+    printf("Digite o nome do procedimento  ");
     scanf("%s",aux->procedimento.nome);
     printf("\nDigite o valor:");
     scanf("%s",&aux->procedimento.valor);
@@ -90,8 +92,8 @@ void ImprimeListaProcedimento(ListaProcedimento *listaprocedimento){
 
         while (temp != NULL){
 
-            printf(" NOME : %s \n",&temp->procedimento.nome);
-            printf(" CODIGO : %s \n",&temp->procedimento.codigo_item);
+            printf("NOME : %s \n",&temp->procedimento.nome);
+            printf("CODIGO : %s \n",&temp->procedimento.codigo_item);
             printf("VALOR : %f \n",&temp->procedimento.valor);
             temp = temp->proximo;
 
