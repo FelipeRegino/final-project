@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "laboratorio.h"
-#include "farmacia.h"
-#include "paciente.h"
+#include "farm.h"
+//#include "paciente.h"
 
 void menuPrincipal() {
 	printf("\n******************\nHOSPITAL GERAL\n******************\n");
@@ -254,6 +254,12 @@ int main() {
 				break;
 			default:
 				system("cls");
+			}
+			case 4: {
+				Farmacia*  F1 = NULL;
+				if (F1 == NULL) F1 = cria_farmacia_central("F", "Terreo");
+			}
+				break;
 			}
 		}
 	}

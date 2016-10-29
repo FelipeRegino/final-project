@@ -1,15 +1,5 @@
 #define MAX 1000
 
-struct farmacia {
-	char codigo;
-	char local;
-	struct farmacia *prim;
-	struct farmacia *prox;
-	char* ListaMedicamentos;
-};
-typedef struct farmacia Farmacia;
-
-
 struct medicamento {
 	char codigo;
 	int qtd;
@@ -29,6 +19,15 @@ struct listaMedicamentos{
 };
 
 typedef struct listaMedicamentos ListaMedicamentos;
+
+struct farmacia {
+	char codigo;
+	char local;
+	struct farmacia *prim;
+	struct farmacia *prox;
+	ListaMedicamentos* ListaMedicamentos;
+};
+typedef struct farmacia Farmacia;
 
 struct entrada{
 	char medicamento;
@@ -50,7 +49,13 @@ struct registros{
 };
 typedef struct registros Registros;
 
-
+struct buscaMedicamento{
+	float id;
+	Medicamento* medicamento;
+	struct buscaMedicamento* esq;
+	struct buscaMedicamento* dir;
+};
+typedef struct buscaMedicamento BuscaMedicamento;
 
 Farmacia* cria_farm_central(char c, char l);
 
@@ -88,3 +93,10 @@ void registraRecebimento(Transferencia* transferencia);
 
 void ImprimeTodosRegistros(Registros* registros);
 
+BuscaMedicamento* criaAbm();
+
+BuscaMedicamento* BuscaMed(BuscaMedicamento* b, float i);
+
+BuscaMedicamento* insereCodBusca(BuscaMedicamento* b, Medicamento* med, float i);
+
+BuscaMedicamento* retiraCodBusca(BuscaMedicamento* r, float v);

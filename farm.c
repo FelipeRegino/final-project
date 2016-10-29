@@ -178,6 +178,80 @@ void ImprimeTodosRegistros(Registros* registros){
 	}
 }
 
+BuscaMedicamento* criaAbm() {
+	return NULL;
+}
+
+BuscaMedicamento* BuscaMed(BuscaMedicamento* b, float i) {
+	if (b == NULL){
+		return NULL;
+	}
+	else if(b->id > i){
+		return BuscaMed(b->esq, i);
+	}
+	else if (b->id < i) {
+		return BuscaMed(b->dir, i);
+	}
+	else {
+		return b;
+	}
+}
+
+BuscaMedicamento* insereCodBusca(BuscaMedicamento* b, Medicamento* med, float i) {
+	if (b == NULL){
+		b = (BuscaMedicamento*)malloc(sizeof(BuscaMedicamento));
+		b->id = i;
+		b->medicamento = med;
+		b->esq = b->dir = NULL;
+	}
+	else if(i < b->id){
+		b->esq = insereCodBusca(b->esq, med, i);
+	}
+	else{
+		b->dir = insereCodBusca(b->dir, med, i);
+	}
+	return b;
+}
+
+BuscaMedicamento* retiraCodBusca(BuscaMedicamento* r, float v) {
+	if (r == NULL){
+		return NULL;
+	}
+	else if(r->id > v){
+		r->esq = retiraCodBusca(r->esq, v);
+	}
+	else if (r->id < v) {
+		r->dir = retiraCodBusca(r->dir, v);
+	}
+	else{
+		if (r->esq == NULL && r->dir == NULL){
+			free(r);
+			r = NULL;
+		}
+		else if (r->esq = NULL){
+			BuscaMedicamento* t = r;
+			r = r->dir;
+			free(t);
+		}
+		else if (r->dir = NULL) {
+			BuscaMedicamento* t = r;
+			r = r->esq;
+			free(t);
+		}
+		else {
+			BuscaMedicamento* f = r->esq;
+			while (f->dir != NULL){
+				f = f->dir;
+			}
+			r->id = f->id;
+			r->medicamento = f->medicamento;
+			f->id = v;
+			r->esq = retiraCodBusca(r->esq, v);
+		}
+	}
+	return r;
+}
+
 int main(){
 	return 0;
 }
